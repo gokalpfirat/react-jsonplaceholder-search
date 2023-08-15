@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import BreadcrumbContext from "./BreadcrumbContext";
 import useComments from "./useComments";
+import ErrorBoundary from "./ErrorBoundary";
 
 const PostPage = () => {
   const { id } = useParams();
@@ -24,4 +25,12 @@ const PostPage = () => {
   );
 };
 
-export default PostPage;
+function PostErrorBoundary(props) {
+  return (
+    <ErrorBoundary>
+      <PostPage {...props} />
+    </ErrorBoundary>
+  );
+}
+
+export default PostErrorBoundary;

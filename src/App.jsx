@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import PostPage from "./PostPage";
 import BreadcrumbContext from "./BreadcrumbContext";
 import { useState } from "react";
-import ErrorBoundary from "./ErrorBoundary";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,14 +32,7 @@ function App() {
             </article>
             <Routes>
               <Route path="/" element={<Container />} />
-              <Route
-                path="/post/:id"
-                element={
-                  <ErrorBoundary>
-                    <PostPage />
-                  </ErrorBoundary>
-                }
-              />
+              <Route path="/post/:id" element={<PostPage />} />
             </Routes>
           </main>
         </BreadcrumbContext.Provider>
